@@ -9,7 +9,15 @@ def binario_para_decimal(bin):
     return str(soma)
 
 def bin_frac_para_decimal(bin):
-    return bin
+    partes = bin.split(",")
+    pt_int = binario_para_decimal(partes[0])
+    binario = partes[1]
+    dec = 0
+    cont = -1
+    for digito in binario:
+        dec += int(digito) * (2 ** cont)
+        cont -= 1
+    return pt_int + ',' + str(dec)[2:]
 
 def decimal_para_binario(dec):
     bin = ""
@@ -17,24 +25,24 @@ def decimal_para_binario(dec):
     if dec == 0:
         return 0
     while dec != 0:
-        print(dec)
         bin += str(dec % 2)
         dec = dec // 2
     bin = bin[::-1]
     return bin
 
 def dec_frac_para_binario(dec):
-    dec = "0." + dec
-    dec = float(dec)
-    bin = "0."
-    while dec != 0:
-        print(dec)
-        print()
-        dec = dec * 2
-        dec = str(dec)
-        bin += dec[0]
-        if dec[0] == '0':
-            dec = float(dec)
+    partes = dec.split(",")
+    pt_int = decimal_para_binario(partes[0])
+    decimal = partes[1]
+    decimal = "0." + decimal
+    decimal = float(decimal)
+    bin = ""
+    while decimal != 0:
+        decimal = decimal * 2
+        decimal = str(decimal)
+        bin += decimal[0]
+        if decimal[0] == '0':
+            decimal = float(decimal)
         else:
-            dec =  float(dec) - int(dec[0])
-    return bin
+            decimal =  float(decimal) - int(decimal[0])
+    return pt_int + ',' + bin
