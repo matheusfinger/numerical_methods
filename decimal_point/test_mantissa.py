@@ -1,4 +1,4 @@
-import calculate_mantissa as calculate_mantissa
+import calculate_mantissa
 
 print("The minimum value of beta = 10; t = 3; and with exponent between [-5, 5] is:")
 print(calculate_mantissa.min_val(10, 5))
